@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://i.ytimg.com/vi/Qv8aaE_rE2M/maxresdefault.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        
+        /* Navbar Styling */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0);
+            padding: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            box-shadow: 0px 0px 20px rgb(255, 255, 255);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 40px;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgb(255, 255, 255);
+            text-align: center;
+            width: 400px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 50%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/login" id="login-link">Login</a>
+        <a href="/signup" id="signup-link">Signup</a>
+        <a href="/logout" id="logout-link" style="display: none;">Logout</a>
+    </div>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <a href="/signup">Don't have an account? Signup</a>
+    </div>
+    <script>
+        let isLoggedIn = {{ session.get('username') | tojson }};
+        
+        if (isLoggedIn) {
+            document.getElementById("login-link").style.display = "none";
+            document.getElementById("signup-link").style.display = "none";
+            document.getElementById("logout-link").style.display = "inline";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+flask
+flask-session
+werkzeug
+mysql-connector-python
+pillow  
+numpy  
+opencv-python  

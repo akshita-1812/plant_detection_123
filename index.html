@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.ytimg.com/vi/Qv8aaE_rE2M/maxresdefault.jpg') no-repeat center center/cover;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0);
+            padding: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            box-shadow: 0px 0px 20px rgb(255, 255, 255);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 40px;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .container {
+            box-shadow: 0px 0px 20px rgb(255, 255, 255);
+            background: rgba(255, 255, 255, 0);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            width: 400px;
+            height: 300px;
+        }
+        h1 { 
+            color: #000000; 
+            font-size: 40px;
+        }
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            font-size: 30px;
+        }
+        button {
+            background: #ff9800;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        font-size: 25px;
+        }
+        button:hover { 
+            background: #e68900; 
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/login" id="login-link">Login</a>
+        <a href="/signup" id="signup-link">Signup</a>
+        <a href="/logout" id="logout-link" style="display: none;">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Upload an Image of <br>Plant Leaf</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file"  name="file" required>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+<script>
+    let isLoggedIn = {{ session.get('username') | tojson }};
+    
+    if (isLoggedIn) {
+        document.getElementById("login-link").style.display = "none";
+        document.getElementById("signup-link").style.display = "none";
+        document.getElementById("logout-link").style.display = "inline";
+    }
+</script>
+</html>

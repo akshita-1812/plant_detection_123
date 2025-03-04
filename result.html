@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.ytimg.com/vi/Qv8aaE_rE2M/maxresdefault.jpg') no-repeat center center/cover;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0);
+            box-shadow: 0px 0px 20px rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            width: 400px;
+        }
+        h1 { color: #000000; }
+        img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 10px 0;
+            height: 200px;
+            box-shadow: 0px 0px 20px rgb(255, 255, 255);
+        }
+        p { font-size: 25px; color: #000000; }
+        .back-button {
+            background: #ff9800;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .back-button:hover { background: #e68900; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Disease Prediction Result</h1>
+        <img src="{{ url_for('static', filename=image_url.split('static/')[-1]) }}" alt="Plant Image">
+        <p><strong>Disease:</strong> {{ disease }}</p>
+        <p><strong>Confidence:</strong> {{ confidence }}%</p>
+        <p><strong>Treatment:</strong> {{ cure }}</p>
+        <a href="/" class="back-button">Upload Another Image</a>
+    </div>
+    
+</body>
+</html>
