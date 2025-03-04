@@ -171,4 +171,6 @@ def predict():
         cure=cure_suggestion,
         image_url=f"uploads/{filename}"  # Correct path for static folder
     )
+if __name__ == "__main__":
+    app.run(debug=True)
 
